@@ -1,0 +1,46 @@
+drop table Patients_record;
+
+create table Patients_record(
+P_ID number(20),
+P_NAME varchar2(25) not null,
+P_FATHER_NAME varchar2(25) not null,
+P_CONTACT number(10) not null,
+P_CONTACT_SEC number(10),
+P_DOB date not null,
+P_GENDER varchar2(6) not null,
+P_EMAIL varchar2(40) not null,
+P_PINCODE number(8) not null,
+constraint patients_id primary key(P_ID)
+);
+
+create sequence patients_id_seq
+start with 100000
+increment by 1;
+
+
+-- insert query
+
+insert into Patients_record(P_ID, P_NAME ,P_FATHER_NAME,P_CONTACT,P_CONTACT_SEC,P_DOB,P_GENDER, P_EMAIL,P_PINCODE ) values ( patients_id_seq.nextval, 'Himanshu' , '' ,,, to_date('','MM/DD/YYYY') , 'male' , 'ABC@XYZ.com' , 334456);commit;
+
+--end
+
+drop table Doctors_record;
+create table Doctors_record(
+ID number(4),
+REGD_NO varchar2(10) not null unique,
+NAME varchar2(25) not null,
+CONTACT number(10) not null,
+GENDER varchar2(6) not null,
+DOB date not null,
+SPECIALISATION varchar(30) not null,
+DESIGNATION varchar(30) not null,
+constraint doctors_id primary key(ID)
+);
+
+drop sequence Doctors_id_sequence;
+create sequence Doctors_id_sequence
+start with 1000
+increment by 1;
+
+--insert
+insert into Doctors_record(ID,REGD_NO,NAME,CONTACT,GENDER, DOB, SPECIALISATION, DESIGNATION)values(Doctors_id_seq.nextval , ?,?,?,?,?,?,?)
